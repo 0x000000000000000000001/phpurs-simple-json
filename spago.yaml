@@ -1,0 +1,12 @@
+package:
+  name: simple-json
+  dependencies:
+    - arrays
+    - exceptions
+    - foreign
+    - foreign-object
+    - nullable
+    - prelude
+    - record
+    - typelevel-prelude
+    - variant
