@@ -1,4 +1,4 @@
-# PureScript-Simple-JSON
+# phpurs-Simple-JSON
 
 ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/justinwoo/purescript-simple-json/ci.yml?branch=master&style=flat-square&logo=github)
 [<img alt="documentation status" src="https://img.shields.io/readthedocs/purescript-simple-json/latest?logo=read-the-docs&style=for-the-badge" height="20">](https://readthedocs.org/projects/purescript-simple-json/badge/?version=latest)
