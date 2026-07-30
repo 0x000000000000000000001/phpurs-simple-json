@@ -4,7 +4,7 @@ $_parseJSON = function($str) {
     return \json_decode($str);
 };
 
-$_undefined = null;
+$_undefined;
 
 $_unsafeStringify = function($val) {
     return \json_encode($val);
