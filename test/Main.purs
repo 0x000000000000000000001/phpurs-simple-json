@@ -2,8 +2,6 @@ module Test.Main where
 
 import Prelude
 
-import Control.Monad.Except (runExcept)
-import Data.Bifunctor (lmap)
 import Data.Either (Either(..), either, isRight)
 import Data.List (List(..), (:))
 import Data.List.NonEmpty (NonEmptyList(..))
@@ -13,9 +11,9 @@ import Data.Nullable (Nullable)
 import Data.Variant (Variant)
 import Effect (Effect)
 import Effect.Exception (throw)
-import Foreign (Foreign, ForeignError(..), MultipleErrors)
+import Foreign (ForeignError(..), MultipleErrors)
 import Foreign.Object (Object)
-import Simple.JSON (class ReadForeign, class WriteForeign, parseJSON, readJSON, writeJSON)
+import Simple.JSON (class ReadForeign, class WriteForeign, readJSON, writeJSON)
 import Test.Assert (assertEqual)
 import Test.EnumSumGeneric as Test.EnumSumGeneric
 import Test.Generic as Test.Generic
@@ -74,14 +72,9 @@ type MyTestVariant = Variant
 
 roundtrips :: forall a. ReadForeign a => WriteForeign a => Proxy a -> String -> Effect Unit
 roundtrips _ enc0 = do
-  let parseJSON' = lmap show <<< runExcept <<< parseJSON
-      dec0 :: E a
+  let dec0 :: E a
       dec0 = readJSON enc0
       enc1 = either (const "bad1") writeJSON dec0
-      json0 :: Either String Foreign
-      json0 = parseJSON' enc0
-      json1 :: Either String Foreign
-      json1 = parseJSON' enc1
       dec1 :: E a
       dec1 = readJSON enc1
       enc2 = either (const "bad2") writeJSON dec1
